@@ -21,4 +21,25 @@ Public Function MessageBoxConfirmation(text As String, title As String) As Boole
     End If
 End Function
 
+Public Function OnlyNumbers(e As Integer) As Boolean
+If (e < 48 Or e > 57) And e <> 8 Then
+    OnlyNumbers = False
+Else
+     OnlyNumbers = True
+End If
+End Function
+
+Public Function NumberAndLetters(e As Integer)
+ If e >= 48 And e <= 57 Then '0-9
+     NumberAndLetters = True
+ ElseIf e >= 65 And e <= 90 Then 'a-z
+     NumberAndLetters = True
+ ElseIf e >= 97 And e <= 122 Then 'A-Z
+     NumberAndLetters = True
+ ElseIf e = 8 Then 'back space
+     NumberAndLetters = True
+ Else
+     NumberAndLetters = False
+ End If
+End Function
 

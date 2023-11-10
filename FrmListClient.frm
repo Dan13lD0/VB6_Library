@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
 Begin VB.Form FrmListClient 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Form1"
+   Caption         =   "List Clients"
    ClientHeight    =   6120
    ClientLeft      =   45
    ClientTop       =   390
@@ -34,6 +34,7 @@ Begin VB.Form FrmListClient
       Begin VB.TextBox txtName 
          Height          =   285
          Left            =   1365
+         MaxLength       =   100
          TabIndex        =   8
          Top             =   495
          Width           =   2505
@@ -41,6 +42,7 @@ Begin VB.Form FrmListClient
       Begin VB.TextBox txtCode 
          Height          =   285
          Left            =   150
+         MaxLength       =   10
          TabIndex        =   7
          Top             =   495
          Width           =   1185
@@ -48,6 +50,7 @@ Begin VB.Form FrmListClient
       Begin VB.TextBox txtRg 
          Height          =   285
          Left            =   3915
+         MaxLength       =   50
          TabIndex        =   6
          Top             =   495
          Width           =   2175
@@ -55,6 +58,7 @@ Begin VB.Form FrmListClient
       Begin VB.TextBox txtCpf 
          Height          =   285
          Left            =   6135
+         MaxLength       =   50
          TabIndex        =   5
          Top             =   480
          Width           =   2670
@@ -275,3 +279,18 @@ dgv.Columns(4).Alignment = dbgCenter
 End Sub
 
 
+Private Sub txtCode_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.OnlyNumbers(KeyAscii)
+End Sub
+
+Private Sub txtCpf_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.OnlyNumbers(KeyAscii)
+End Sub
+
+Private Sub txtName_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.NumberAndLetters(KeyAscii)
+End Sub
+
+Private Sub txtRg_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.NumberAndLetters(KeyAscii)
+End Sub

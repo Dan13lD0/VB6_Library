@@ -24,6 +24,7 @@ Begin VB.Form FrmCreateUpdateClient
       Begin VB.TextBox txtPerson 
          Height          =   315
          Left            =   3165
+         MaxLength       =   50
          TabIndex        =   25
          Top             =   510
          Width           =   3180
@@ -31,6 +32,7 @@ Begin VB.Form FrmCreateUpdateClient
       Begin VB.TextBox txtContact 
          Height          =   315
          Left            =   1365
+         MaxLength       =   20
          TabIndex        =   23
          Top             =   525
          Width           =   1710
@@ -38,6 +40,7 @@ Begin VB.Form FrmCreateUpdateClient
       Begin VB.TextBox txtType 
          Height          =   315
          Left            =   120
+         MaxLength       =   50
          TabIndex        =   21
          Top             =   525
          Width           =   1170
@@ -77,6 +80,7 @@ Begin VB.Form FrmCreateUpdateClient
       Begin VB.TextBox txtCep 
          Height          =   315
          Left            =   120
+         MaxLength       =   15
          TabIndex        =   30
          Top             =   615
          Width           =   1155
@@ -84,6 +88,7 @@ Begin VB.Form FrmCreateUpdateClient
       Begin VB.TextBox txtStreet 
          Height          =   315
          Left            =   120
+         MaxLength       =   100
          TabIndex        =   29
          Top             =   1470
          Width           =   6180
@@ -91,6 +96,7 @@ Begin VB.Form FrmCreateUpdateClient
       Begin VB.TextBox txtComplement 
          Height          =   315
          Left            =   120
+         MaxLength       =   100
          TabIndex        =   28
          Top             =   2295
          Width           =   2550
@@ -98,6 +104,7 @@ Begin VB.Form FrmCreateUpdateClient
       Begin VB.TextBox txtCity 
          Height          =   315
          Left            =   2670
+         MaxLength       =   50
          TabIndex        =   27
          Top             =   2295
          Width           =   1800
@@ -105,6 +112,7 @@ Begin VB.Form FrmCreateUpdateClient
       Begin VB.TextBox txtState 
          Height          =   315
          Left            =   4515
+         MaxLength       =   50
          TabIndex        =   26
          Top             =   2295
          Width           =   1800
@@ -165,12 +173,13 @@ Begin VB.Form FrmCreateUpdateClient
          _ExtentX        =   2434
          _ExtentY        =   582
          _Version        =   393216
-         Format          =   84017153
+         Format          =   223870977
          CurrentDate     =   45235
       End
       Begin VB.TextBox txtCpf 
          Height          =   315
          Left            =   4560
+         MaxLength       =   20
          TabIndex        =   17
          Top             =   1005
          Width           =   1710
@@ -178,6 +187,7 @@ Begin VB.Form FrmCreateUpdateClient
       Begin VB.TextBox txtRg 
          Height          =   315
          Left            =   2775
+         MaxLength       =   20
          TabIndex        =   15
          Top             =   1020
          Width           =   1710
@@ -185,6 +195,7 @@ Begin VB.Form FrmCreateUpdateClient
       Begin VB.TextBox txtAge 
          Height          =   315
          Left            =   1530
+         MaxLength       =   2
          TabIndex        =   13
          Top             =   1020
          Width           =   1170
@@ -192,6 +203,7 @@ Begin VB.Form FrmCreateUpdateClient
       Begin VB.TextBox txtName 
          Height          =   315
          Left            =   90
+         MaxLength       =   150
          TabIndex        =   11
          Top             =   420
          Width           =   6210
@@ -272,6 +284,7 @@ Begin VB.Form FrmCreateUpdateClient
       Width           =   1455
    End
    Begin VB.TextBox txtCode 
+      Enabled         =   0   'False
       Height          =   315
       Left            =   135
       TabIndex        =   2
@@ -303,6 +316,7 @@ Attribute VB_Exposed = False
 Dim bll As New ClientBll
 Dim bllAddress As New AddressBll
 Dim bllContact As New ContactBll
+Dim utils As New utils
 Dim contactId As String
 Dim addressId As String
 
@@ -456,3 +470,50 @@ Else
 End If
 End Sub
 
+Private Sub txtAge_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.OnlyNumbers(KeyAscii)
+End Sub
+
+Private Sub txtCep_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.OnlyNumbers(KeyAscii)
+End Sub
+
+Private Sub txtCity_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.NumberAndLetters(KeyAscii)
+End Sub
+
+Private Sub txtComplement_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.NumberAndLetters(KeyAscii)
+End Sub
+
+Private Sub txtContact_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.OnlyNumbers(KeyAscii)
+End Sub
+
+Private Sub txtCpf_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.OnlyNumbers(KeyAscii)
+End Sub
+
+Private Sub txtName_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.NumberAndLetters(KeyAscii)
+End Sub
+
+Private Sub txtPerson_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.NumberAndLetters(KeyAscii)
+End Sub
+
+Private Sub txtRg_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.OnlyNumbers(KeyAscii)
+End Sub
+
+Private Sub txtState_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.NumberAndLetters(KeyAscii)
+End Sub
+
+Private Sub txtStreet_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.NumberAndLetters(KeyAscii)
+End Sub
+
+Private Sub txtType_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.NumberAndLetters(KeyAscii)
+End Sub

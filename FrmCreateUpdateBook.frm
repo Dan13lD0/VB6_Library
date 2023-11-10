@@ -46,6 +46,7 @@ Begin VB.Form FrmCreateUpdateBook
       Begin VB.TextBox txtDescription 
          Height          =   1320
          Left            =   45
+         MaxLength       =   300
          MultiLine       =   -1  'True
          TabIndex        =   14
          Text            =   "FrmCreateUpdateBook.frx":0000
@@ -79,6 +80,7 @@ Begin VB.Form FrmCreateUpdateBook
       Begin VB.TextBox txtName 
          Height          =   315
          Left            =   60
+         MaxLength       =   150
          TabIndex        =   6
          Top             =   405
          Width           =   4860
@@ -133,6 +135,7 @@ Begin VB.Form FrmCreateUpdateBook
       Width           =   1455
    End
    Begin VB.TextBox txtCode 
+      Enabled         =   0   'False
       Height          =   315
       Left            =   165
       TabIndex        =   2
@@ -165,7 +168,7 @@ Dim bllCategory As New CategoryBll
 Dim bllAuthor As New AuthorBll
 Dim bllPublisher As New PublisherBll
 Dim bll As New BookBll
-
+Dim utils As New utils
 Private Sub btnClean_Click()
 txtName.text = ""
 txtDescription.text = ""
@@ -210,6 +213,15 @@ Unload Me
 
 End Sub
 
+Private Sub Form_Activate()
+If txtCode.text = "" Then
+    Me.Caption = "Create Record"
+    cboStatus.text = "Active"
+Else
+    Me.Caption = "Update Record"
+End If
+End Sub
+
 Private Sub Form_Load()
 LoadComboBox
 End Sub
@@ -251,4 +263,13 @@ cboPublisher.AddItem (recordPublisher.Fields.Item(1).Value)
 recordPublisher.MoveNext
 Wend
 cboPublisher.text = "Select"
+End Sub
+
+Private Sub txtDescription_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.NumberAndLetters(KeyAscii)
+End Sub
+
+Private Sub txtName_KeyPress(KeyAscii As Integer)
+
+KeyAscii = utils.NumberAndLetters(KeyAscii)
 End Sub

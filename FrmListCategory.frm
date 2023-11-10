@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
 Begin VB.Form FrmListCategory 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Form1"
+   Caption         =   "List Categories"
    ClientHeight    =   6120
    ClientLeft      =   45
    ClientTop       =   390
@@ -91,6 +91,7 @@ Begin VB.Form FrmListCategory
       Begin VB.TextBox txtCode 
          Height          =   285
          Left            =   150
+         MaxLength       =   10
          TabIndex        =   7
          Top             =   495
          Width           =   1185
@@ -98,6 +99,7 @@ Begin VB.Form FrmListCategory
       Begin VB.TextBox txtName 
          Height          =   285
          Left            =   1365
+         MaxLength       =   100
          TabIndex        =   6
          Top             =   495
          Width           =   5085
@@ -252,3 +254,10 @@ cboStatus.AddItem ("Inactive")
 cboStatus.text = "All"
 End Sub
 
+Private Sub txtCode_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.OnlyNumbers(KeyAscii)
+End Sub
+
+Private Sub txtName_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.NumberAndLetters(KeyAscii)
+End Sub

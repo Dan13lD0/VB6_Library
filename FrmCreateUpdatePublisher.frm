@@ -40,11 +40,13 @@ Begin VB.Form FrmCreateUpdatePublisher
    Begin VB.TextBox txtName 
       Height          =   315
       Left            =   105
+      MaxLength       =   150
       TabIndex        =   2
       Top             =   1275
       Width           =   5085
    End
    Begin VB.TextBox txtCode 
+      Enabled         =   0   'False
       Height          =   315
       Left            =   90
       TabIndex        =   1
@@ -56,6 +58,7 @@ Begin VB.Form FrmCreateUpdatePublisher
       ItemData        =   "FrmCreateUpdatePublisher.frx":0000
       Left            =   3780
       List            =   "FrmCreateUpdatePublisher.frx":000A
+      Style           =   2  'Dropdown List
       TabIndex        =   0
       Top             =   450
       Width           =   1455
@@ -91,7 +94,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Dim bll As New PublisherBll
-
+Dim utils As New utils
 Private Sub btnClean_Click()
 txtName.text = ""
 
@@ -115,13 +118,15 @@ Else
 End If
 End Sub
 
-Private Sub Form_Load()
+Private Sub Form_Activate()
 If txtCode.text = "" Then
     Me.Caption = "Create Record"
     cboStatus.text = "Active"
 Else
     Me.Caption = "Update Record"
 End If
-
 End Sub
 
+Private Sub txtName_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.NumberAndLetters(KeyAscii)
+End Sub

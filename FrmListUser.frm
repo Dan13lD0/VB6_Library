@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
 Begin VB.Form FrmListUser 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Form1"
+   Caption         =   "List Users"
    ClientHeight    =   6120
    ClientLeft      =   45
    ClientTop       =   390
@@ -24,6 +24,7 @@ Begin VB.Form FrmListUser
       Begin VB.TextBox txtLogin 
          Height          =   285
          Left            =   3915
+         MaxLength       =   50
          TabIndex        =   15
          Top             =   495
          Width           =   2175
@@ -31,6 +32,7 @@ Begin VB.Form FrmListUser
       Begin VB.TextBox txtEmail 
          Height          =   285
          Left            =   6135
+         MaxLength       =   150
          TabIndex        =   13
          Top             =   480
          Width           =   2670
@@ -38,6 +40,7 @@ Begin VB.Form FrmListUser
       Begin VB.TextBox txtCode 
          Height          =   285
          Left            =   150
+         MaxLength       =   10
          TabIndex        =   7
          Top             =   495
          Width           =   1185
@@ -45,6 +48,7 @@ Begin VB.Form FrmListUser
       Begin VB.TextBox txtName 
          Height          =   285
          Left            =   1365
+         MaxLength       =   150
          TabIndex        =   6
          Top             =   495
          Width           =   2505
@@ -141,6 +145,8 @@ Begin VB.Form FrmListUser
       _ExtentX        =   25982
       _ExtentY        =   8758
       _Version        =   393216
+      AllowUpdate     =   0   'False
+      AllowArrows     =   0   'False
       HeadLines       =   1
       RowHeight       =   15
       BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -294,3 +300,18 @@ cboStatus.text = "All"
 End Sub
 
 
+Private Sub txtCode_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.OnlyNumbers(KeyAscii)
+End Sub
+
+Private Sub txtEmail_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.NumberAndLetters(KeyAscii)
+End Sub
+
+Private Sub txtLogin_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.NumberAndLetters(KeyAscii)
+End Sub
+
+Private Sub txtName_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.NumberAndLetters(KeyAscii)
+End Sub

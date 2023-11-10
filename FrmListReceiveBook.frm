@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
 Begin VB.Form FrmListReceiveBook 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Form1"
+   Caption         =   "List Receive Books"
    ClientHeight    =   6120
    ClientLeft      =   45
    ClientTop       =   390
@@ -40,6 +40,7 @@ Begin VB.Form FrmListReceiveBook
       Begin VB.TextBox txtClient 
          Height          =   285
          Left            =   4545
+         MaxLength       =   100
          TabIndex        =   6
          Top             =   495
          Width           =   4275
@@ -47,6 +48,7 @@ Begin VB.Form FrmListReceiveBook
       Begin VB.TextBox txtBook 
          Height          =   285
          Left            =   165
+         MaxLength       =   100
          TabIndex        =   1
          Top             =   480
          Width           =   4335
@@ -184,3 +186,10 @@ Private Sub Form_Load()
 LoadGrid
 End Sub
 
+Private Sub txtBook_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.NumberAndLetters(KeyAscii)
+End Sub
+
+Private Sub txtClient_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.NumberAndLetters(KeyAscii)
+End Sub

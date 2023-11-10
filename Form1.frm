@@ -34,6 +34,7 @@ Begin VB.Form FrmLogin
       Height          =   360
       IMEMode         =   3  'DISABLE
       Left            =   180
+      MaxLength       =   10
       PasswordChar    =   "*"
       TabIndex        =   3
       Text            =   "admin"
@@ -43,6 +44,7 @@ Begin VB.Form FrmLogin
    Begin VB.TextBox txtLogin 
       Height          =   360
       Left            =   195
+      MaxLength       =   50
       TabIndex        =   2
       Text            =   "admin"
       Top             =   705

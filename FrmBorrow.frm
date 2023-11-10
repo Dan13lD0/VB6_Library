@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form FrmBorrow 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Book"
+   Caption         =   "Create Borrow"
    ClientHeight    =   10245
    ClientLeft      =   45
    ClientTop       =   390
@@ -23,7 +23,7 @@ Begin VB.Form FrmBorrow
       _ExtentX        =   2487
       _ExtentY        =   582
       _Version        =   393216
-      Format          =   203096065
+      Format          =   224854017
       CurrentDate     =   45235
    End
    Begin VB.CommandButton btnClose 
@@ -58,6 +58,7 @@ Begin VB.Form FrmBorrow
       Top             =   3960
       Width           =   8835
       Begin VB.TextBox txtPerson 
+         Enabled         =   0   'False
          Height          =   315
          Left            =   6900
          TabIndex        =   33
@@ -65,6 +66,7 @@ Begin VB.Form FrmBorrow
          Width           =   1800
       End
       Begin VB.TextBox txtContact 
+         Enabled         =   0   'False
          Height          =   315
          Left            =   5055
          TabIndex        =   31
@@ -72,6 +74,7 @@ Begin VB.Form FrmBorrow
          Width           =   1800
       End
       Begin VB.TextBox txtType 
+         Enabled         =   0   'False
          Height          =   315
          Left            =   165
          TabIndex        =   29
@@ -79,6 +82,7 @@ Begin VB.Form FrmBorrow
          Width           =   4815
       End
       Begin VB.TextBox txtState 
+         Enabled         =   0   'False
          Height          =   315
          Left            =   6900
          TabIndex        =   27
@@ -86,6 +90,7 @@ Begin VB.Form FrmBorrow
          Width           =   1800
       End
       Begin VB.TextBox txtCity 
+         Enabled         =   0   'False
          Height          =   315
          Left            =   5055
          TabIndex        =   25
@@ -93,6 +98,7 @@ Begin VB.Form FrmBorrow
          Width           =   1800
       End
       Begin VB.TextBox txtComplement 
+         Enabled         =   0   'False
          Height          =   315
          Left            =   165
          TabIndex        =   23
@@ -100,6 +106,7 @@ Begin VB.Form FrmBorrow
          Width           =   4815
       End
       Begin VB.TextBox txtStreet 
+         Enabled         =   0   'False
          Height          =   315
          Left            =   165
          TabIndex        =   21
@@ -107,6 +114,7 @@ Begin VB.Form FrmBorrow
          Width           =   8535
       End
       Begin VB.TextBox txtCpf 
+         Enabled         =   0   'False
          Height          =   315
          Left            =   1920
          TabIndex        =   19
@@ -114,6 +122,7 @@ Begin VB.Form FrmBorrow
          Width           =   1680
       End
       Begin VB.TextBox txtRg 
+         Enabled         =   0   'False
          Height          =   315
          Left            =   165
          TabIndex        =   17
@@ -121,6 +130,7 @@ Begin VB.Form FrmBorrow
          Width           =   1680
       End
       Begin VB.TextBox txtCep 
+         Enabled         =   0   'False
          Height          =   315
          Left            =   165
          TabIndex        =   15
@@ -128,6 +138,7 @@ Begin VB.Form FrmBorrow
          Width           =   1155
       End
       Begin VB.TextBox txtClientName 
+         Enabled         =   0   'False
          Height          =   315
          Left            =   165
          TabIndex        =   13
@@ -247,6 +258,7 @@ Begin VB.Form FrmBorrow
       Top             =   75
       Width           =   8835
       Begin VB.TextBox txtAuthor 
+         Enabled         =   0   'False
          Height          =   315
          Left            =   150
          TabIndex        =   11
@@ -254,6 +266,7 @@ Begin VB.Form FrmBorrow
          Width           =   8520
       End
       Begin VB.TextBox txtPublisher 
+         Enabled         =   0   'False
          Height          =   315
          Left            =   4440
          TabIndex        =   9
@@ -261,6 +274,7 @@ Begin VB.Form FrmBorrow
          Width           =   4260
       End
       Begin VB.TextBox txtCategory 
+         Enabled         =   0   'False
          Height          =   315
          Left            =   150
          TabIndex        =   7
@@ -268,6 +282,7 @@ Begin VB.Form FrmBorrow
          Width           =   4260
       End
       Begin VB.TextBox txtBookName 
+         Enabled         =   0   'False
          Height          =   315
          Left            =   150
          TabIndex        =   5
@@ -316,7 +331,7 @@ Begin VB.Form FrmBorrow
       _ExtentX        =   2487
       _ExtentY        =   582
       _Version        =   393216
-      Format          =   138674177
+      Format          =   224854017
       CurrentDate     =   45235
    End
    Begin VB.Label Label17 

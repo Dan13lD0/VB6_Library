@@ -18,14 +18,15 @@ Begin VB.Form FrmCreateUpdateCategory
       ItemData        =   "FrmCreateUpdateCategory.frx":0000
       Left            =   3810
       List            =   "FrmCreateUpdateCategory.frx":000A
+      Style           =   2  'Dropdown List
       TabIndex        =   8
-      Text            =   "Combo1"
       Top             =   360
       Width           =   1455
    End
    Begin VB.TextBox txtCode 
+      Enabled         =   0   'False
       Height          =   315
-      Left            =   120
+      Left            =   135
       TabIndex        =   4
       Top             =   420
       Width           =   1110
@@ -33,6 +34,7 @@ Begin VB.Form FrmCreateUpdateCategory
    Begin VB.TextBox txtName 
       Height          =   315
       Left            =   135
+      MaxLength       =   150
       TabIndex        =   3
       Top             =   1185
       Width           =   5085
@@ -92,7 +94,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Dim bll As New CategoryBll
-
+Dim utils As New utils
 Private Sub btnClean_Click()
 txtName.text = ""
 
@@ -116,11 +118,14 @@ Else
 End If
 End Sub
 
-Private Sub Form_Load()
+Private Sub Form_Activate()
 If txtCode.text = "" Then
     Me.Caption = "Create Record"
 Else
     Me.Caption = "Update Record"
 End If
+End Sub
 
+Private Sub txtName_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.NumberAndLetters(KeyAscii)
 End Sub

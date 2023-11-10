@@ -26,6 +26,7 @@ Begin VB.Form FrmCreateUpdateUser
    Begin VB.TextBox txtEmail 
       Height          =   315
       Left            =   105
+      MaxLength       =   150
       TabIndex        =   12
       Top             =   2625
       Width           =   5085
@@ -33,6 +34,7 @@ Begin VB.Form FrmCreateUpdateUser
    Begin VB.TextBox txtPassword 
       Height          =   315
       Left            =   2640
+      MaxLength       =   15
       TabIndex        =   10
       Top             =   1875
       Width           =   2535
@@ -40,6 +42,7 @@ Begin VB.Form FrmCreateUpdateUser
    Begin VB.TextBox txtLogin 
       Height          =   315
       Left            =   105
+      MaxLength       =   50
       TabIndex        =   8
       Top             =   1890
       Width           =   2475
@@ -71,11 +74,13 @@ Begin VB.Form FrmCreateUpdateUser
    Begin VB.TextBox txtName 
       Height          =   315
       Left            =   105
+      MaxLength       =   150
       TabIndex        =   3
       Top             =   1155
       Width           =   5085
    End
    Begin VB.TextBox txtCode 
+      Enabled         =   0   'False
       Height          =   315
       Left            =   90
       TabIndex        =   1
@@ -137,6 +142,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Dim bll As New UserBll
+Dim utils As New utils
 Private Sub btnClean_Click()
 txtName.text = ""
 txtLogin.text = ""
@@ -169,11 +175,27 @@ Else
 End If
 End Sub
 
-Private Sub Form_Load()
+Private Sub Form_Activate()
 If txtCode.text = "" Then
 Me.Caption = "Create record"
 cboStatus.text = "Active"
 Else
 Me.Caption = "Update record"
 End If
+End Sub
+
+Private Sub txtEmail_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.NumberAndLetters(KeyAscii)
+End Sub
+
+Private Sub txtLogin_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.NumberAndLetters(KeyAscii)
+End Sub
+
+Private Sub txtName_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.NumberAndLetters(KeyAscii)
+End Sub
+
+Private Sub txtPassword_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.NumberAndLetters(KeyAscii)
 End Sub

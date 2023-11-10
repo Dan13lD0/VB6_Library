@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin VB.MDIForm FrmMain 
    BackColor       =   &H8000000C&
-   Caption         =   "MDIForm1"
+   Caption         =   "Main"
    ClientHeight    =   3135
    ClientLeft      =   165
    ClientTop       =   810

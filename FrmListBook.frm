@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
 Begin VB.Form FrmListBook 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Form1"
+   Caption         =   "List Books"
    ClientHeight    =   6090
    ClientLeft      =   45
    ClientTop       =   390
@@ -56,6 +56,7 @@ Begin VB.Form FrmListBook
       Begin VB.TextBox txtName 
          Height          =   285
          Left            =   1365
+         MaxLength       =   100
          TabIndex        =   6
          Top             =   495
          Width           =   2505
@@ -63,6 +64,7 @@ Begin VB.Form FrmListBook
       Begin VB.TextBox txtCode 
          Height          =   285
          Left            =   150
+         MaxLength       =   10
          TabIndex        =   5
          Top             =   495
          Width           =   1185
@@ -222,7 +224,7 @@ Dim bllCategory As New CategoryBll
 Dim bllAuthor As New AuthorBll
 Dim bllPublisher As New PublisherBll
 Dim bll As New BookBll
-
+Dim utils As New utils
 Private Sub btnClose_Click()
 Unload Me
 End Sub
@@ -340,4 +342,12 @@ cboPublisher.AddItem (recordPublisher.Fields.Item(1).Value)
 recordPublisher.MoveNext
 Wend
 cboPublisher.text = "All"
+End Sub
+
+Private Sub txtCode_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.OnlyNumbers(KeyAscii)
+End Sub
+
+Private Sub txtName_KeyPress(KeyAscii As Integer)
+KeyAscii = utils.NumberAndLetters(KeyAscii)
 End Sub
